@@ -4,7 +4,9 @@ class LoginPage extends Page {
     get inputUsername () { return $('#normal_login_email'); }
     get inputPassword () { return $('#normal_login_password'); }
     get buttonSubmit () { return $('.login-form-button'); }
-    get errorToast () { return $('.ant-notification-notice-message');}
+    get errorToast () { return $('.ant-notification-notice-message'); }
+    get errorEmailRequired  () { return $('//div[contains(@class, "ant-form-item-with-help")][.//input[@id="normal_login_email"]]//div[@role="alert"]'); }
+    get errorPasswordRequired  () { return $('//div[contains(@class, "ant-form-item-with-help")][.//input[@id="normal_login_password"]]//div[@role="alert"]');}
 
     setLogin (email) {
         this.inputUsername.setValue(email);
@@ -26,8 +28,27 @@ class LoginPage extends Page {
         expect(this.buttonSubmit).toBeDisabled();
     }
 
-    invalidEmail() {
-        expect($('.ant-form-item-explain').isDisplayed());
+    errorMessageEmailAppeared() {
+        expect(this.errorEmailRequired).toBeDisplayed();
+        expect(this.errorEmailRequired.getText()).toEqual('Required');
+    }
+
+    errorMessagePasswordAppeared () {
+        expect(this.errorPasswordRequired).toBeDisplayed();
+        expect(this.errorPasswordRequired.getText()).toEqual('Required');
+    }
+
+    errorInvalidEmailAppeared() {
+        expect(this.errorEmailRequired).toBeDisplayed();
+        expect(this.errorEmailRequired.getText()).toEqual('\'email\' is not a valid email');
+    }
+
+    clearingEmail() {
+        this.clearInput(this.inputUsername);
+    }
+
+    clearingPassword() {
+        this.clearInput(this.inputPassword);
     }
 
     errorToastAppeared() {

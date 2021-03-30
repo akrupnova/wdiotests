@@ -21,12 +21,24 @@ describe('Auth', () => {
         LoginPage.submitButtonIsDisabled();
      });
 
-    it('error message with invalid email', () => {
-        LoginPage.setLogin('aaa@example.com');
-        LoginPage.invalidEmail();
+    it('error message Required for email', () => {
+        LoginPage.setLogin('agjgvf');
+        LoginPage.clearingEmail();
+        LoginPage.errorMessageEmailAppeared();
     });
 
-    it('error message with invalid email and password', () => {
+    it('error message Required for password', () => {
+        LoginPage.setPassword('qwe');
+        LoginPage.clearingPassword();
+        LoginPage.errorMessagePasswordAppeared();
+    });
+
+    it('error message for invalid email', () => {
+        LoginPage.setLogin('afff');
+        LoginPage.errorInvalidEmailAppeared();
+    });
+
+    it('error Auth message with invalid email and password', () => {
         LoginPage.setLogin('aaa@example.com');
         LoginPage.setPassword('123zx');
         LoginPage.clickSubmitButton();
