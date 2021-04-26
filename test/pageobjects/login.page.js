@@ -21,7 +21,7 @@ class LoginPage extends Page {
     }
 
      open () {
-        return super.open('/');  //user.login instead of / could be
+        return super.open('/user/login');  //user.login instead of / could be
     }
 
     submitButtonIsDisabled() {

@@ -1,5 +1,5 @@
 import LoginPage from  '../pageobjects/login.page';
-import ProfilePage from  '../pageobjects/profile.page';
+import ProfilePage from '../pageobjects/portal/profile.portal.page';
 
 describe('Auth', () => {
     beforeEach(() => {
@@ -24,17 +24,20 @@ describe('Auth', () => {
     it('error message Required for email', () => {
         LoginPage.setLogin('agjgvf');
         LoginPage.clearingEmail();
+//        browser.pause(2000);
         LoginPage.errorMessageEmailAppeared();
     });
 
     it('error message Required for password', () => {
         LoginPage.setPassword('qwe');
         LoginPage.clearingPassword();
+        browser.pause(2000);
         LoginPage.errorMessagePasswordAppeared();
     });
 
     it('error message for invalid email', () => {
         LoginPage.setLogin('afff');
+//        browser.pause(2000);
         LoginPage.errorInvalidEmailAppeared();
     });
 
