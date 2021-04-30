@@ -47,8 +47,4 @@ describe('Auth', () => {
         LoginPage.clickSubmitButton();
         LoginPage.errorToastAppeared();
     });
-
-
 });
-
-
