@@ -31,7 +31,7 @@ describe('Auth', () => {
     it('error message Required for password', () => {
         LoginPage.setPassword('qwe');
         LoginPage.clearingPassword();
-        browser.pause(2000);
+        browser.pause(1500);
         LoginPage.errorMessagePasswordAppeared();
     });
 
