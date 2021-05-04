@@ -37,7 +37,7 @@ describe('Auth', () => {
 
     it('error message for invalid email', () => {
         LoginPage.setLogin('afff');
-//        browser.pause(2000);
+        browser.pause(2000);
         LoginPage.errorInvalidEmailAppeared();
     });
 
