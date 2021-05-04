@@ -8,51 +8,51 @@ class LoginPage extends Page {
     get errorEmailRequired  () { return $('//div[contains(@class, "ant-form-item-with-help")][.//input[@id="normal_login_email"]]//div[@role="alert"]'); }
     get errorPasswordRequired  () { return $('//div[contains(@class, "ant-form-item-with-help")][.//input[@id="normal_login_password"]]//div[@role="alert"]');}
 
-    setLogin (email) {
-        this.inputUsername.setValue(email);
+    async setLogin (email) {
+        return (await this.inputUsername).setValue(email);
     }
 
-    setPassword (password) {
-        this.inputPassword.setValue(password);
+    async setPassword (password) {
+        return (await this.inputPassword).setValue(password);
     }
 
-    clickSubmitButton () {
-        this.buttonSubmit.click();
+    async clickSubmitButton () {
+        return (await this.buttonSubmit).click();
     }
 
-     open () {
+    async open () {
         return super.open('/user/login');  //user.login instead of / could be
     }
 
-    submitButtonIsDisabled() {
+    async submitButtonIsDisabled() {
         expect(this.buttonSubmit).toBeDisabled();
     }
 
-    errorMessageEmailAppeared() {
-        expect(this.errorEmailRequired).toBeDisplayed();
-        expect(this.errorEmailRequired.getText()).toEqual('Required');
+    async errorMessageEmailAppeared() {
+        await expect(this.errorEmailRequired).toBeDisplayed();
+        await expect(this.errorEmailRequired).toHaveText('Required');
     }
 
-    errorMessagePasswordAppeared () {
-        expect(this.errorPasswordRequired).toBeDisplayed();
-        expect(this.errorPasswordRequired.getText()).toEqual('Required');
+    async errorMessagePasswordAppeared () {
+        await expect(this.errorPasswordRequired).toBeDisplayed();
+        await expect(this.errorPasswordRequired).toHaveText('Required');
     }
 
-    errorInvalidEmailAppeared() {
-        expect(this.errorEmailRequired).toBeDisplayed();
-        expect(this.errorEmailRequired.getText()).toEqual('\'email\' is not a valid email');
+    async errorInvalidEmailAppeared() {
+        await expect(this.errorEmailRequired).toBeDisplayed();
+        await expect(this.errorEmailRequired).toHaveText('\'email\' is not a valid email');
     }
 
-    clearingEmail() {
-        this.clearInput(this.inputUsername);
+    async clearingEmail() {
+        return this.clearInput(await this.inputUsername);
     }
 
-    clearingPassword() {
-        this.clearInput(this.inputPassword);
+    async clearingPassword() {
+        return this.clearInput(await this.inputPassword);
     }
 
-    errorToastAppeared() {
-       expect(this.errorToast).toBeDisplayed();
+    async errorToastAppeared() {
+       return expect(this.errorToast).toBeDisplayed();
     }
 }
 

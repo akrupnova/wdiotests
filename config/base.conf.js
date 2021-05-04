@@ -3,7 +3,7 @@ module.exports = {
         './test/specs/**/*.js'
     ],
     exclude: [
-     //   './test/specs/navigation.spec.js'
+        './test/specs/navigation.spec.js'
     ],
 
     logLevel: 'info',
